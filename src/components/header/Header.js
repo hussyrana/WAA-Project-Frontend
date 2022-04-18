@@ -1,6 +1,7 @@
 import {
   AppBar,
   Avatar,
+  Badge,
   Box,
   Button,
   Container,
@@ -11,17 +12,20 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import React, { useContext } from "react";
+import MailIcon from '@mui/icons-material/Mail';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import React, { useContext, useRef } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import authContext from "../../context/AuthProvider";
 import "./Header.css";
 
 const pages = ["Products", "Blog"];
-const settings = ["Dashboard", "Logout"];
+const settings = ["Orders", "Logout"];
 function Header() {
   const { setAuth } = useContext(authContext);
   const navigate = useNavigate();
+  const pageRef = useRef();
 
   
 
@@ -35,9 +39,16 @@ function Header() {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (ev) => {
     setAnchorElNav(null);
+    if(ev.target.innerText==="PRODUCTS"){
+      navigate("/");
+    }
   };
+  const handleCartClick = ()=>{
+    navigate("/cart");
+  }
+ 
 
   const handleCloseUserMenu = (value) => {
     setAnchorElUser(null);
@@ -46,8 +57,8 @@ function Header() {
         setAuth(null);
         navigate("/login");
         break;
-      case "DashBoard":
-        console.log(value);
+      case "Orders":
+        navigate("/orders");
         break;
       default:
         console.log(value);
@@ -96,7 +107,7 @@ function Header() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem ref={pageRef} key={page} name='page' value={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -122,7 +133,17 @@ function Header() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, mr:5 }}>
+            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+              {/* <Link to='/cart'> */}
+              <Badge badgeContent={4} color="error" onClick={handleCartClick}>
+                <ShoppingCartOutlinedIcon />
+              </Badge>
+              {/* </Link> */}
+            </IconButton>
+            </Box>
+          <Box sx={{ flexGrow: 0}}>
+          
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />

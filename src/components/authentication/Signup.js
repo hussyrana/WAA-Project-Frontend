@@ -33,6 +33,7 @@ const Signup = () => {
           "& .MuiTextField-root": { m: 1, width: "25ch" },
         }}
         autoComplete="off"
+        val
         ref={formRef}
       >
         <Card sx={{ maxWidth: 400, top: 50, left: 50 }}>
