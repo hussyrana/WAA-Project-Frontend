@@ -1,6 +1,6 @@
 import React from 'react';
 import Product from '../seller/Product'
-import { Grid } from '@mui/material';
+import {Grid,  Container } from '@mui/material';
 
 const Products = (
     // { 
@@ -23,15 +23,12 @@ const Products = (
       <Grid
         container
         align='center'
-        
       >
         {products.map((product) => (
-            <Grid item xs={12}>
           <Product
             key={product.id}
             product={product}
           />
-          </Grid>
         ))}
       </Grid>
     </main>

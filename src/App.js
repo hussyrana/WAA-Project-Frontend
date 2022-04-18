@@ -19,7 +19,6 @@ function App() {
         <Route element={<AuthProtectet/>}>
           <Route path="/" element={<DashBoard />} />
           <Route path="seller" element={<SellerDashBoard />}>
-            <Route path="addProduct" element={<AddProduct />} />
             <Route path="test" element={<Test />} />
           </Route>
           <Route path="addProduct" element={<AddProduct />} />

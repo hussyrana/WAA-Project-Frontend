@@ -1,6 +1,6 @@
 import { Box, Card, Link, Typography, Stack, Switch, Divider, Chip } from "@mui/material";
 import { Grid } from '@mui/material';
-import { Link as RouterLink, Route } from "react-router-dom";
+import { Link as RouterLink, Navigate, Route, useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import Button from '@mui/material/Button';
 import CardMedia from '@mui/material/CardMedia';
@@ -18,8 +18,9 @@ const ProductImgStyle = styled("img")({
 
 const Product = ({ product, classes }) => {
     const { id, name, price, priceSale } = product;
-
+    const navigate = useNavigate()
     return(
+        <Grid md={12} item >
         <Card sx={{  borderRadius: 3, margin: 2, display: 'flex' }}> 
             <CardMedia
             component="img"
@@ -59,24 +60,18 @@ const Product = ({ product, classes }) => {
             size='small'
             variant='contained'
             onClick={() => {
+                navigate('/addProduct');
             //   handlePurchase(totalProducts + 1);
             //   dispatch({ type: 'PURCHASE_ITEM', payload: newProduct });
             }}
           >
-            <Link
-              to='/addProduct'
-              style={{
-                textDecoration: 'none',
-                color: '#fff',
-              }}
-            >
               Editt
-            </Link>
           </Button>
           <Button
             size='small'
             variant='contained'
             onClick={() => {
+                window.confirm("Are you sure to delete this product?")
             //   handlePurchase(totalProducts + 1);
             //   dispatch({ type: 'PURCHASE_ITEM', payload: newProduct });
             }}
@@ -88,7 +83,7 @@ const Product = ({ product, classes }) => {
                 color: '#fff',
               }}
             >
-              Remove
+              Delete
             </Link>
           </Button>
       
@@ -96,6 +91,7 @@ const Product = ({ product, classes }) => {
           </Grid>
           
       </Card>
+      </Grid>
     );
 
 }
