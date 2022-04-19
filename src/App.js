@@ -12,6 +12,9 @@ import Layout from "./components/layout/Layout";
 import ProductDetails from "./components/product/ProductDetails";
 import Products from "./components/product/Products";
 import DashBoard from "./components/container/DashBoard";
+import SellerDashBoard from "./components/seller/SellerDashboard"
+import AddProduct from "./components/seller/AddProduct";
+import SellerOrders from "./components/seller/Orders";
 
 function App() {
   return (
@@ -29,6 +32,10 @@ function App() {
           <Route path="product-details/:id" element={<ProductDetails />} />
           <Route path="sellers" element={<Sellers />} />
           <Route path="reviews" element={<Reviews />} />
+
+          <Route path="seller" element={<SellerDashBoard />}/>
+          <Route path="addProduct" element={<AddProduct />} />
+          <Route path="seller/orders" element={<SellerOrders />} />
         </Route>
       </Route>
     </Routes>
