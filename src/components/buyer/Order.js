@@ -9,9 +9,6 @@ const Order = ({
   name,
   price,
   image,
-  //dispatch,
-  totalItems,
-  //handleRemove,
 }) => {
   return (
     <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
@@ -32,11 +29,7 @@ const Order = ({
         varient='filled'
           sx={{mt:1, ml:1}}
           onClick={() => {
-            //handleRemove(totalItems - 1);
-            // dispatch({
-            //   type: 'REMOVE_ITEM',
-            //   payload: id,
-            // });
+            
           }}
         >
           Post

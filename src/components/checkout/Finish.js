@@ -1,6 +1,8 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 const Finish = ({ finished, total }) => {
+ const {totalPrice} = useSelector(state=>state.cart)
   {
     if (true) {
       return (
@@ -12,7 +14,7 @@ const Finish = ({ finished, total }) => {
           }}
         >
           <h2>You have succesfully finished payment!</h2>
-          <p>Total: $1500</p>
+          <p>Total: ${totalPrice}</p>
         </div>
       );
     } else {

@@ -7,28 +7,16 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { increment } from "../../redux/cart";
 
-const Product = ({
-  id,
-  name,
-  description,
-  price,
-  image,
-  //   totalProducts,
-  //   handlePurchase,
-  //   dispatch,
-}) => {
-  //   const newProduct = {
-  //     id: new Date().getTime().toString(),
-  //     name,
-  //     image,
-  //     description,
-  //     price,
-  //   };
+const Product = ({ id, name, description, price, image }) => {
+
+  const dispatch = useDispatch();
   return (
     <Grid item xs={4}>
       <Card variant="outlined" sx={{ maxWidth: 345, mt: 3, mb: 5 }}>
-        <Link to={`product-details/${id}`} key={id}>
+        <Link to={`product-details/${id}`} key={id} style={{textDecoration:'none'}}>
           <CardMedia
             component="img"
             image={image}
@@ -63,19 +51,12 @@ const Product = ({
             size="small"
             variant="contained"
             onClick={() => {
-              //   handlePurchase(totalProducts + 1);
+              //   handleAddToCart(totalProducts + 1);
               //   dispatch({ type: 'PURCHASE_ITEM', payload: newProduct });
+              dispatch(increment({ id, name, description, price, image }));
             }}
           >
-            <Link
-              to="/cart"
-              style={{
-                textDecoration: "none",
-                color: "#fff",
-              }}
-            >
-              Purchase
-            </Link>
+            Add to Cart
           </Button>
         </CardActions>
       </Card>

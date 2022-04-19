@@ -45,6 +45,7 @@ export default function BillingInfo() {
             <TextField id="state" label="State" variant="outlined" />
             <TextField id="zip" label="Zip" variant="outlined" />
             <TextField id="country" label="Country" variant="outlined" />
+            <TextField id="phone" label="Phone" variant="outlined" />
 
             
           </Box>
@@ -54,14 +55,15 @@ export default function BillingInfo() {
               "& > :not(style)": { m: 1, width: "25ch" },
             }}
           >
-            <TextField id="fName" label="FirstName" variant="outlined" />
-            <TextField id="lName" label="LastName" variant="outlined" />
-            <TextField id="address" label="Street Address" variant="outlined" />
-            <TextField id="address2" label="Apt. Unit" variant="outlined" />
-            <TextField id="city" label="City" variant="outlined" />
-            <TextField id="state" label="State" variant="outlined" />
-            <TextField id="zip" label="Zip" variant="outlined" />
-            <TextField id="country" label="Country" variant="outlined" />
+            <TextField id="fNameb" label="FirstName" variant="outlined" />
+            <TextField id="lNameb" label="LastName" variant="outlined" />
+            <TextField id="addressb" label="Street Address" variant="outlined" />
+            <TextField id="address2b" label="Apt. Unit" variant="outlined" />
+            <TextField id="cityb" label="City" variant="outlined" />
+            <TextField id="stateb" label="State" variant="outlined" />
+            <TextField id="zipb" label="Zip" variant="outlined" />
+            <TextField id="countryb" label="Country" variant="outlined" />
+            <TextField id="phoneb" label="Phone" variant="outlined" />
 
             
           </Box>

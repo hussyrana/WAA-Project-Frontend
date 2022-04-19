@@ -12,29 +12,30 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import MailIcon from '@mui/icons-material/Mail';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import React, { useContext, useRef } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import authContext from "../../context/AuthProvider";
 import "./Header.css";
+import { useSelector } from "react-redux";
 
 const pages = ["Products", "Blog"];
 const settings = ["Orders", "Logout"];
+
 function Header() {
+
   const { setAuth } = useContext(authContext);
   const navigate = useNavigate();
   const pageRef = useRef();
-
-  
-
+  const {cartCount} = useSelector(state=>state.cart);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -45,10 +46,6 @@ function Header() {
       navigate("/");
     }
   };
-  const handleCartClick = ()=>{
-    navigate("/cart");
-  }
- 
 
   const handleCloseUserMenu = (value) => {
     setAnchorElUser(null);
@@ -64,6 +61,11 @@ function Header() {
         console.log(value);
     }
   };
+
+  const handleCartClick = ()=>{
+    navigate("/cart");
+  }
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -134,12 +136,10 @@ function Header() {
           </Box>
 
           <Box sx={{ display: { xs: 'none', md: 'flex' }, mr:5 }}>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              {/* <Link to='/cart'> */}
-              <Badge badgeContent={4} color="error" onClick={handleCartClick}>
+            <IconButton onClick={handleCartClick} size="large" aria-label="show 4 new mails" color="inherit">
+              <Badge badgeContent={cartCount} color="error" >
                 <ShoppingCartOutlinedIcon />
               </Badge>
-              {/* </Link> */}
             </IconButton>
             </Box>
           <Box sx={{ flexGrow: 0}}>
