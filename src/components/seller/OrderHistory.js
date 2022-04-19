@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -9,6 +9,11 @@ import Paper from '@mui/material/Paper';
 import { Grid } from '@mui/material';
 import Button from '@mui/material/Button';
 import Order from './Order';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 const OrderHistory = (
 //    {
@@ -26,6 +31,11 @@ const OrderHistory = (
         {id:2, name:'Iphone', description:"products description", price:1400, image:'https://hocotech.com/wp-content/uploads/2019/07/hoco-w21-graceful-charm-wire-control-headphones-overview.jpg'},
         
     ]
+    const [orderStatus, SetOrderStatus] = useState("Shipped");
+    const handleChange = (e) => {
+        SetOrderStatus(e.target.value);
+        console.log("order status "+ orderStatus)
+    };
   return (
     <div>
       <Grid container spacing={0} align='center' sx={{ mt: 5, pl: 5, pr: 5 }}>
@@ -33,10 +43,9 @@ const OrderHistory = (
           <Table sx={{ minWidth: 650 }} aria-label='simple table'>
             <TableHead>
               <TableRow>
-                <TableCell align='left'>Image</TableCell>
+                <TableCell align='left'></TableCell>
                 <TableCell align='center'>Product Name</TableCell>
                 <TableCell align='center'>Product Price</TableCell>
-                <TableCell align='center'>Order Status</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -68,7 +77,22 @@ const OrderHistory = (
           </Grid>
           <Grid item xs={3} align='center'>
             
-
+          <Box >
+        <FormControl sx={{ width: "140px"}} >
+            <InputLabel id="demo-simple-select-label">Order Status</InputLabel>
+            <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={orderStatus}
+            label="Order Status"
+            onChange={handleChange}
+            >
+            <MenuItem value={"Shipped"}>Shipped</MenuItem>
+            <MenuItem value={"On-the-way"}>On-the-way</MenuItem>
+            <MenuItem value={"Delivered"}>Delivered</MenuItem>
+            </Select>
+        </FormControl>
+    </Box>
             
           </Grid>
           <Grid item xs={3} align='center'>

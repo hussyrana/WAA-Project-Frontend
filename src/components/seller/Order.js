@@ -39,24 +39,6 @@ const Order = ({
       </TableCell>
       <TableCell align='center'>{name}</TableCell>
       <TableCell align='center'>{price}</TableCell>
-      <TableCell align='center'>
-        <Box sx={{ minWidth: 120 }}>
-        <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Order Status</InputLabel>
-            <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={orderStatus}
-            label="Order Status"
-            onChange={handleChange}
-            >
-            <MenuItem value={"Shipped"}>Shipped</MenuItem>
-            <MenuItem value={"On-the-way"}>On-the-way</MenuItem>
-            <MenuItem value={"Delivered"}>Delivered</MenuItem>
-            </Select>
-        </FormControl>
-    </Box>
-      </TableCell>
     </TableRow>
   );
 };
