@@ -9,6 +9,7 @@ import Paper from "@mui/material/Paper";
 import { Grid } from "@mui/material";
 import Button from "@mui/material/Button";
 import Order from "./Order";
+import { PrintOrder } from "./PrintOrder";
 
 const OrderHistory = ({ products, totalPrice, status }) => {
   //const products = [
@@ -69,7 +70,8 @@ const OrderHistory = ({ products, totalPrice, status }) => {
               </Button>
             </Grid>
             <Grid item xs={3} align="center">
-              <Button
+            <PrintOrder order={products}/>
+              {/*<Button
                 variant="outlined"
                 color="primary"
                 onClick={() => {
@@ -81,7 +83,7 @@ const OrderHistory = ({ products, totalPrice, status }) => {
                 }}
               >
                 Print Reciept
-              </Button>
+              </Button>*/}
             </Grid>
           </Grid>
         </TableContainer>
