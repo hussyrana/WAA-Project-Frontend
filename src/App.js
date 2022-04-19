@@ -6,6 +6,7 @@ import Signup from "./components/authentication/Signup";
 import Layout from "./components/layout/Layout";
 import Test from "./components/product/Test";
 import AddProduct from "./components/seller/AddPorduct";
+import Orders from "./components/seller/Orders";
 import DashBoard from "./container/DashBoard";
 import SellerDashBoard from "./container/SellerDashBoard";
 
@@ -18,10 +19,9 @@ function App() {
         
         <Route element={<AuthProtectet/>}>
           <Route path="/" element={<DashBoard />} />
-          <Route path="seller" element={<SellerDashBoard />}>
-            <Route path="test" element={<Test />} />
-          </Route>
+          <Route path="seller" element={<SellerDashBoard />}/>
           <Route path="addProduct" element={<AddProduct />} />
+          <Route path="orders" element={<Orders />} />
           </Route>
       </Route>
     </Routes>

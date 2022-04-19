@@ -5,19 +5,13 @@ import { styled } from "@mui/material/styles";
 import Button from '@mui/material/Button';
 import CardMedia from '@mui/material/CardMedia';
 import CardActions from '@mui/material/CardActions';
-
-const ProductImgStyle = styled("img")({
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    position: "absolute",
-  });
+import CardContent from '@mui/material/CardContent';
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
 
 
 const Product = ({ product, classes }) => {
-    const { id, name, price, priceSale } = product;
+    const { id, name, price, description } = product;
     const navigate = useNavigate()
     return(
         <Grid md={12} item >
@@ -28,26 +22,22 @@ const Product = ({ product, classes }) => {
             src={`https://hocotech.com/wp-content/uploads/2019/07/hoco-w21-graceful-charm-wire-control-headphones-overview.jpg`}
             alt="Live from space album cover"
         />
-        <Stack spacing={2} sx={{ p: 3 }}>
+        
+
+        
+        <Stack spacing={2} sx={{ p: 3, width: "917px", textAlign: "left"}}>
           <Link to={'' +id} color="inherit" underline="hover" component={RouterLink} >
-  {/*         
-          <Link to={{ 
-    pathname: '' +id, 
-    search: `choosenDog=${JSON.stringify({ ...product })}`
-  }}
-          
-  color="inherit" underline="hover" component={RouterLink} > */}
-  
             <Typography variant="subtitle2" noWrap>
               {name}
             </Typography>
           </Link>
-  
-          <Stack spacing={2} sx={{ p: 3 }}>
             <Typography variant="subtitle1">
               {price}
             </Typography>
-          </Stack>
+            <Typography variant="subtitle1">
+              {description}
+            </Typography>
+          
           </Stack>
           <Grid item xs={12}>
 
@@ -70,6 +60,7 @@ const Product = ({ product, classes }) => {
           <Button
             size='small'
             variant='contained'
+            startIcon={<DeleteIcon />}
             onClick={() => {
                 window.confirm("Are you sure to delete this product?")
             //   handlePurchase(totalProducts + 1);
