@@ -4,20 +4,16 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { AuthProvider } from "./context/AuthProvider";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import {store} from './redux/store';
+import { store } from "./redux/store";
 
 ReactDOM.render(
   <React.StrictMode>
-    
-    <BrowserRouter>
-      <AuthProvider>
-        <Routes>
-          <Route path="/*" element={<Provider store={store}><App /></Provider>} />
-        </Routes>
-      </AuthProvider>
-    </BrowserRouter>
+    <AuthProvider>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

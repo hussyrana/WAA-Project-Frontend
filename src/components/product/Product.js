@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { increment } from "../../redux/cart";
 
-const Product = ({ id, name, description, price, image }) => {
+const Product = ({ id, title, description, price, image }) => {
 
   const dispatch = useDispatch();
   return (
@@ -25,7 +25,7 @@ const Product = ({ id, name, description, price, image }) => {
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {name}
+              {title}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               {description}
@@ -53,7 +53,7 @@ const Product = ({ id, name, description, price, image }) => {
             onClick={() => {
               //   handleAddToCart(totalProducts + 1);
               //   dispatch({ type: 'PURCHASE_ITEM', payload: newProduct });
-              dispatch(increment({ id, name, description, price, image }));
+              dispatch(increment({ id, title, description, price, image }));
             }}
           >
             Add to Cart

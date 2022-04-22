@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Product from "./Product";
 import { Grid } from "@mui/material";
 import { products } from "../../data";
+import api from "../../api/api";
+
 const Products = () => {
+  // const [products, setProducts] = useState([]);
+  // useEffect(()=>{
+  //   api.get('/products').then(res=>{
+  //     setProducts(res.data);
+  //     console.log(res.data);
+  //   }).catch(err=>{
+  //     console.log(err.message);
+  //   })
+  // }, [])
+
   return (
     <main>
       <Grid

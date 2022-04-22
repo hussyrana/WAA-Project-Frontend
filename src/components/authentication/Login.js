@@ -5,20 +5,34 @@ import useAuth from "../../hooks/useAuth";
 import "./Login.css";
 const Login = () => {
   const loginFormRef = useRef();
-  const { setAuth } = useAuth();
+  // const {setAuth } = useAuth();
   const navigate = useNavigate();
 
   const handleLoginButton = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8080/api/v1/authenticate", {
-        email: loginFormRef.current["email"].value,
+      .post("http://10.200.9.191:8089/auth/login", {
+        username: loginFormRef.current["email"].value,
         password: loginFormRef.current["password"].value,
       })
       .then((res) => {
-        setAuth(res.data);
-        navigate("/posts");
-        console.log(res.data);
+        // setAuth(res.data);
+        if (res.data?.jwt) {
+          const item = {
+            jwt: res.data.jwt,
+            username: res.data.userDetails.username,
+            password: res.data.userDetails.password,
+            roles: res.data.userDetails.roles,
+          };
+          localStorage.setItem("data", JSON.stringify(item));
+          if (res?.data?.userDetails?.roles === "SELLER") {
+            navigate("/products");
+          } else if (res?.data?.userDetails?.roles === "BUYER") {
+            navigate("/");
+          } else if (res?.data?.userDetails?.roles === "ADMIN") {
+            navigate("/sellers");
+          }
+        }
       })
       .catch((err) => {
         console.log(err.message);
